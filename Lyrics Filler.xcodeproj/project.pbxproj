@@ -7,13 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FFBCB7F826274764236EBC2 /* Pods_Lyrics_Filler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B02DFB357CE7A371F8DA11 /* Pods_Lyrics_Filler.framework */; };
 		4CC46CBD1EED6F28002379A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC46CBC1EED6F28002379A6 /* AppDelegate.swift */; };
 		4CC46CBF1EED6F28002379A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC46CBE1EED6F28002379A6 /* ViewController.swift */; };
 		4CC46CC21EED6F28002379A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC46CC01EED6F28002379A6 /* Main.storyboard */; };
 		4CC46CC51EED6F28002379A6 /* Lyrics_Filler.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CC46CC31EED6F28002379A6 /* Lyrics_Filler.xcdatamodeld */; };
 		4CC46CC71EED6F28002379A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC46CC61EED6F28002379A6 /* Assets.xcassets */; };
 		4CC46CCA1EED6F28002379A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC46CC81EED6F28002379A6 /* LaunchScreen.storyboard */; };
+		4CC46CDB1EFD5458002379A6 /* Genius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC46CDA1EFD5458002379A6 /* Genius.swift */; };
+		4CE15AB81F0042C50023680F /* Lyrics_Filler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE15AB71F0042C50023680F /* Lyrics_Filler_Tests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CE15ABA1F0042C50023680F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CC46CB11EED6F28002379A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CC46CB81EED6F28002379A6;
+			remoteInfo = "Lyrics Filler";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4CC46CB91EED6F28002379A6 /* Lyrics Filler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lyrics Filler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +37,25 @@
 		4CC46CC61EED6F28002379A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CC46CC91EED6F28002379A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CC46CCB1EED6F28002379A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CC46CDA1EFD5458002379A6 /* Genius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genius.swift; sourceTree = "<group>"; };
+		4CE15AB51F0042C50023680F /* Lyrics Filler Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lyrics Filler Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CE15AB71F0042C50023680F /* Lyrics_Filler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyrics_Filler_Tests.swift; sourceTree = "<group>"; };
+		4CE15AB91F0042C50023680F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68B02DFB357CE7A371F8DA11 /* Pods_Lyrics_Filler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyrics_Filler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA6A6D9E0D0517FDD894F41A /* Pods-Lyrics Filler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyrics Filler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lyrics Filler/Pods-Lyrics Filler.release.xcconfig"; sourceTree = "<group>"; };
+		FF056A22BC53F74B461747F5 /* Pods-Lyrics Filler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyrics Filler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lyrics Filler/Pods-Lyrics Filler.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4CC46CB61EED6F28002379A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FFBCB7F826274764236EBC2 /* Pods_Lyrics_Filler.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CE15AB21F0042C50023680F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,11 +65,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03D06DEDEBF81C5269C1A762 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF056A22BC53F74B461747F5 /* Pods-Lyrics Filler.debug.xcconfig */,
+				CA6A6D9E0D0517FDD894F41A /* Pods-Lyrics Filler.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4CC46CB01EED6F28002379A6 = {
 			isa = PBXGroup;
 			children = (
 				4CC46CBB1EED6F28002379A6 /* Lyrics Filler */,
+				4CE15AB61F0042C50023680F /* Lyrics Filler Tests */,
 				4CC46CBA1EED6F28002379A6 /* Products */,
+				03D06DEDEBF81C5269C1A762 /* Pods */,
+				D33A815A58DE5B714EC947BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				4CC46CB91EED6F28002379A6 /* Lyrics Filler.app */,
+				4CE15AB51F0042C50023680F /* Lyrics Filler Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,6 +97,7 @@
 		4CC46CBB1EED6F28002379A6 /* Lyrics Filler */ = {
 			isa = PBXGroup;
 			children = (
+				4CC46CDA1EFD5458002379A6 /* Genius.swift */,
 				4CC46CBC1EED6F28002379A6 /* AppDelegate.swift */,
 				4CC46CBE1EED6F28002379A6 /* ViewController.swift */,
 				4CC46CC01EED6F28002379A6 /* Main.storyboard */,
@@ -67,6 +109,23 @@
 			path = "Lyrics Filler";
 			sourceTree = "<group>";
 		};
+		4CE15AB61F0042C50023680F /* Lyrics Filler Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4CE15AB71F0042C50023680F /* Lyrics_Filler_Tests.swift */,
+				4CE15AB91F0042C50023680F /* Info.plist */,
+			);
+			path = "Lyrics Filler Tests";
+			sourceTree = "<group>";
+		};
+		D33A815A58DE5B714EC947BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68B02DFB357CE7A371F8DA11 /* Pods_Lyrics_Filler.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CC46CCE1EED6F28002379A6 /* Build configuration list for PBXNativeTarget "Lyrics Filler" */;
 			buildPhases = (
+				EE1664EC708B2149BB00070A /* [CP] Check Pods Manifest.lock */,
 				4CC46CB51EED6F28002379A6 /* Sources */,
 				4CC46CB61EED6F28002379A6 /* Frameworks */,
 				4CC46CB71EED6F28002379A6 /* Resources */,
+				52A0BC8EB512697C80E4BBF0 /* [CP] Embed Pods Frameworks */,
+				D6D42264A575C1CA4EEF4DE4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -86,6 +148,24 @@
 			productName = "Lyrics Filler";
 			productReference = 4CC46CB91EED6F28002379A6 /* Lyrics Filler.app */;
 			productType = "com.apple.product-type.application";
+		};
+		4CE15AB41F0042C50023680F /* Lyrics Filler Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CE15ABC1F0042C50023680F /* Build configuration list for PBXNativeTarget "Lyrics Filler Tests" */;
+			buildPhases = (
+				4CE15AB11F0042C50023680F /* Sources */,
+				4CE15AB21F0042C50023680F /* Frameworks */,
+				4CE15AB31F0042C50023680F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CE15ABB1F0042C50023680F /* PBXTargetDependency */,
+			);
+			name = "Lyrics Filler Tests";
+			productName = "Lyrics Filler Tests";
+			productReference = 4CE15AB51F0042C50023680F /* Lyrics Filler Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,6 +181,12 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = F2899A9238;
 						ProvisioningStyle = Automatic;
+					};
+					4CE15AB41F0042C50023680F = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = F2899A9238;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4CC46CB81EED6F28002379A6;
 					};
 				};
 			};
@@ -118,6 +204,7 @@
 			projectRoot = "";
 			targets = (
 				4CC46CB81EED6F28002379A6 /* Lyrics Filler */,
+				4CE15AB41F0042C50023680F /* Lyrics Filler Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -133,7 +220,62 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CE15AB31F0042C50023680F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		52A0BC8EB512697C80E4BBF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lyrics Filler/Pods-Lyrics Filler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6D42264A575C1CA4EEF4DE4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lyrics Filler/Pods-Lyrics Filler-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE1664EC708B2149BB00070A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4CC46CB51EED6F28002379A6 /* Sources */ = {
@@ -141,12 +283,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC46CC51EED6F28002379A6 /* Lyrics_Filler.xcdatamodeld in Sources */,
+				4CC46CDB1EFD5458002379A6 /* Genius.swift in Sources */,
 				4CC46CBF1EED6F28002379A6 /* ViewController.swift in Sources */,
 				4CC46CBD1EED6F28002379A6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CE15AB11F0042C50023680F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CE15AB81F0042C50023680F /* Lyrics_Filler_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CE15ABB1F0042C50023680F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CC46CB81EED6F28002379A6 /* Lyrics Filler */;
+			targetProxy = 4CE15ABA1F0042C50023680F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4CC46CC01EED6F28002379A6 /* Main.storyboard */ = {
@@ -214,6 +373,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Lyrics Filler/Lyrics Filler-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -256,6 +416,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Lyrics Filler/Lyrics Filler-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -263,27 +424,63 @@
 		};
 		4CC46CCF1EED6F28002379A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF056A22BC53F74B461747F5 /* Pods-Lyrics Filler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F2899A9238;
 				INFOPLIST_FILE = "Lyrics Filler/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.torsm.Lyrics-Filler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		4CC46CD01EED6F28002379A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA6A6D9E0D0517FDD894F41A /* Pods-Lyrics Filler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F2899A9238;
 				INFOPLIST_FILE = "Lyrics Filler/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.torsm.Lyrics-Filler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4CE15ABD1F0042C50023680F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = F2899A9238;
+				INFOPLIST_FILE = "Lyrics Filler Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.torsm.Lyrics-Filler-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lyrics Filler.app/Lyrics Filler";
+			};
+			name = Debug;
+		};
+		4CE15ABE1F0042C50023680F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = F2899A9238;
+				INFOPLIST_FILE = "Lyrics Filler Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.torsm.Lyrics-Filler-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lyrics Filler.app/Lyrics Filler";
 			};
 			name = Release;
 		};
@@ -304,6 +501,15 @@
 			buildConfigurations = (
 				4CC46CCF1EED6F28002379A6 /* Debug */,
 				4CC46CD01EED6F28002379A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CE15ABC1F0042C50023680F /* Build configuration list for PBXNativeTarget "Lyrics Filler Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CE15ABD1F0042C50023680F /* Debug */,
+				4CE15ABE1F0042C50023680F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
