@@ -68,10 +68,10 @@ public class Genius {
                 let doc = try SwiftSoup.parse(String(data: data, encoding: .utf8)!)
                 let lyricsElement = try doc.getElementsByClass("lyrics").first()!
                 for lineBreak in try lyricsElement.getElementsByTag("br") {
-                    try lineBreak.text("<br>")
+                    try lineBreak.text("[newline]")
                 }
                 let text = try lyricsElement.text()
-                return text.trimHTML()
+                return text.trimHTML(lineSeparator: "[newline]")
             } catch {
                 return nil
             }
@@ -172,9 +172,9 @@ extension Dictionary {
 
 extension String {
     
-    func trimHTML() -> String {
+    func trimHTML(lineSeparator: String) -> String {
         var result = String()
-        for line in self.components(separatedBy: "<br>") {
+        for line in self.components(separatedBy: lineSeparator) {
             result.append("\(line.trimmingCharacters(in: .whitespaces))\n")
         }
         return result.trimmingCharacters(in: .whitespacesAndNewlines)

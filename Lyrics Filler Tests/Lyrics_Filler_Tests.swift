@@ -11,14 +11,10 @@ import XCTest
 
 class Lyrics_Filler_Tests: XCTestCase {
     var genius: Genius!
-    var song: GeniusSong!
-    var responseExpectation: XCTestExpectation!
-
     
     override func setUp() {
         super.setUp()
         genius = Genius(accessToken: "uQJZhbPCYbzn4GxIK9A7iQ9frDQj5NQ1lGtP-drisYoYiWQ07zHtRgekUM4IC4A6")
-        responseExpectation = expectation(description: "api response expectation")
     }
     
     override func tearDown() {
@@ -27,26 +23,19 @@ class Lyrics_Filler_Tests: XCTestCase {
     }
     
     func testSearch() {
-        genius.search(query: "99 luftballons") { songs, error in
-            
-            XCTAssert(error == nil)
-            XCTAssert(!songs!.isEmpty)
-            
-            self.song = songs!.first!
-            
-            self.responseExpectation.fulfill()
-        }
+        let responseExpectation = expectation(description: "response expectation")
         
-        wait(for: [responseExpectation], timeout: 10)
-        self.responseExpectation = expectation(description: "html response expectation")
-        
-        genius.getLyrics(song: song) { lyrics, error in
-            XCTAssert(error == nil)
-            XCTAssert(lyrics != nil)
+        self.genius.search(query: "99 Luftballons") { songs, error in
+            XCTAssertNil(error)
+            XCTAssertFalse(songs!.isEmpty)
             
-            print("\n----------\n\(lyrics!)\n-----------\n")
-            
-            self.responseExpectation.fulfill()
+            self.genius.getLyrics(song: songs!.first!) { lyrics, error in
+                XCTAssertNil(error)
+                
+                print("\n\(lyrics!)\n")
+                
+                responseExpectation.fulfill()
+            }
         }
         
         wait(for: [responseExpectation], timeout: 10)
