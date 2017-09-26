@@ -13,17 +13,9 @@ import SwiftSoup
 
 
 public class Genius {
-    private let accessToken: String
+    static var accessToken: String = ""
     
-    /*
-     Initializes the Genius instance with the access token required to query data from the Genius API
-     */
-    public init(accessToken: String) {
-        self.accessToken = accessToken
-    }
-
-    
-    public func search(query: String, completionHandler: @escaping (Array<GeniusSong>?, Error?) -> Void) {
+    public static func search(query: String, completionHandler: @escaping (Array<GeniusSong>?, Error?) -> Void) {
         var params = [
             "q": query
         ]
@@ -55,7 +47,7 @@ public class Genius {
     }
     
     
-    public func getLyrics(song: GeniusSong, completionHandler: @escaping (String?, Error?) -> Void) {
+    public static func getLyrics(song: GeniusSong, completionHandler: @escaping (String?, Error?) -> Void) {
         guard let url = URL(string: song.lyricsUrl) else {
             completionHandler(nil, APIAccessError.malformedURL); return
         }
@@ -68,10 +60,13 @@ public class Genius {
                 let doc = try SwiftSoup.parse(String(data: data, encoding: .utf8)!)
                 let lyricsElement = try doc.getElementsByClass("lyrics").first()!
                 for lineBreak in try lyricsElement.getElementsByTag("br") {
-                    try lineBreak.text("[newline]")
+                    try lineBreak.text("%%")
                 }
-                let text = try lyricsElement.text()
-                return text.trimHTML(lineSeparator: "[newline]")
+                var text = try lyricsElement.text().trimHTML(lineSeparator: "%%")
+                while let annotation = text.range(of: "\\[[^\\[\\]]*\\]\n", options: .regularExpression) {
+                    text.removeSubrange(annotation)
+                }
+                return text
             } catch {
                 return nil
             }
@@ -85,7 +80,7 @@ public class Genius {
      This method forms a URL with the root location of the Genius API and the desired route, including parameters.
      The result a configured URLRequest ready to be used in a data task.
      */
-    private func createAPIRequest(route: String, params: inout [String: String]) -> URLRequest? {
+    private static func createAPIRequest(route: String, params: inout [String: String]) -> URLRequest? {
         guard let url = URL(string: "https://api.genius.com\(route)?\(params.stringFromHttpParameters())") else {
             return nil
         }
@@ -133,23 +128,33 @@ private func wrapCompletionHandler<T>(completionHandler: @escaping (T?, Error?) 
 public struct GeniusSong {
     init?(json: [String: Any]) {
         guard let id = json["id"] as? Int,
-            let title = json["full_title"] as? String,
+            let title = json["title_with_featured"] as? String,
+            let artist = (json["primary_artist"] as? [String: Any])?["name"] as? String,
             let lyricsUrl = json["url"] as? String,
-            let thumbnailUrl = json["header_image_thumbnail_url"] as? String else {
+            let thumbnailUrl = json["header_image_url"] as? String else {
                 return nil
         }
         
         self.id = id
         self.title = title
+        self.artist = artist
+        self.lyricsUrl = lyricsUrl
+        self.thumbnailUrl = thumbnailUrl
+    }
+    
+    init(id: Int, title: String, artist: String, lyricsUrl: String, thumbnailUrl: String) {
+        self.id = id
+        self.title = title
+        self.artist = artist
         self.lyricsUrl = lyricsUrl
         self.thumbnailUrl = thumbnailUrl
     }
     
     public let id: Int
     public let title: String
+    public let artist: String
     public let lyricsUrl: String
     public let thumbnailUrl: String
-    
 }
 
 

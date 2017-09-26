@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Genius.accessToken = "uQJZhbPCYbzn4GxIK9A7iQ9frDQj5NQ1lGtP-drisYoYiWQ07zHtRgekUM4IC4A6"
         return true
     }
 
