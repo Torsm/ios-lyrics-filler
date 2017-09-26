@@ -33,18 +33,30 @@ class ConfigurationViewController: UIViewController {
         updateGamemode()
     }
     
+    
+    /**
+     Updates the description label based on the selected difficulty
+     */
     @objc func updateDifficulty() {
         let difficulty = Difficulty(rawValue: difficultySegments.selectedSegmentIndex)!
         difficultyDescriptionLabel.text = descriptions[difficulty]
         game.difficulty = difficulty
     }
     
+    
+    /**
+     Updates the description label based on the selected gamemode
+     */
     @objc func updateGamemode() {
         let gamemode = Gamemode(rawValue: gamemodeSegments.selectedSegmentIndex)!
         gamemodeDescriptionLabel.text = descriptions[gamemode]
         game.gamemode = gamemode
     }
     
+    
+    /**
+     Passes the game instance to the next view's controller
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let gvc = segue.destination as? GameViewController {
             gvc.game = self.game
@@ -53,7 +65,7 @@ class ConfigurationViewController: UIViewController {
 }
 
 
-// Source of this extension: https://stackoverflow.com/a/27712427
+// https://stackoverflow.com/a/27712427
 extension UIImageView {
     func downloadFrom(link: String) {
         guard let url = URL(string: link) else {

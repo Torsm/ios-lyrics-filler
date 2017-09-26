@@ -39,6 +39,10 @@ class GameViewController: UIViewController, GameDelegate {
     }
     
     
+    /**
+     Gets called by the model after lyrics have been loaded and the game has been initialized.
+     Decorates the textview for lyrics to hide gaps.
+     */
     func gameLoaded() {
         activityIndicator.stopAnimating()
         textField.isEnabled = true
@@ -60,6 +64,9 @@ class GameViewController: UIViewController, GameDelegate {
     }
     
     
+    /**
+     Gets called every time the user changes the text of the input text field and passes the call to the controller if the text is not empty.
+     */
     @objc func textInput(notification: NSNotification) {
         if let text = textField.text {
             game.receiveUserInput(text)
@@ -67,6 +74,10 @@ class GameViewController: UIViewController, GameDelegate {
     }
     
     
+    /**
+     Gets called by the model if the entered text is matching a gap or a joker has been used.
+     Scrolls to the corresponding gap and redecorates the textview to unveil it.
+     */
     func successfulInput(gap: NSRange) {
         textField.text = ""
         textView.scrollRangeToVisible(gap)
@@ -78,6 +89,9 @@ class GameViewController: UIViewController, GameDelegate {
     }
     
     
+    /**
+     If the game is not over yet, the user will first be prompted to confirm his action before being sent back to the main menu.
+     */
     @IBAction func giveupButtonPressed(_ sender: Any) {
         if game.gameOver {
             game.exit()
@@ -119,6 +133,9 @@ class GameViewController: UIViewController, GameDelegate {
     }
     
     
+    /**
+     Will adjust the layout of the view when the keyboard will show.
+     */
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
@@ -127,11 +144,17 @@ class GameViewController: UIViewController, GameDelegate {
     }
     
     
+    /**
+     Will adjust the layout of the view when the keyboard will hide.
+     */
     @objc func keyboardWillHide(notification: NSNotification) {
         bottomConstraint.constant = CGFloat(8)
     }
     
     
+    /**
+     Gets called by the model if there was an error while loading the lyrics.
+     */
     func loadingFailed() {
         let alert = UIAlertController(title: "Fehler", message: "Spiel konnte nicht geladen werden.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
@@ -165,6 +188,9 @@ extension UIColor {
 
 
 extension Int {
+    /**
+     Interprets the value as an amount of seconds and returns a string with the format "mm:ss"
+     */
     func format() -> String {
         if self < 0 {
             return ""

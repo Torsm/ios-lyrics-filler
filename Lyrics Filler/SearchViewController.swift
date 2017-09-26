@@ -24,6 +24,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         resultsTableView.dataSource = self
     }
     
+    /**
+     Uses Genius to search for the entered text and populates the list with results.
+     */
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         titleSearchBar.endEditing(true)
         activityIndicator.startAnimating()

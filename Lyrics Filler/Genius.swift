@@ -15,6 +15,10 @@ import SwiftSoup
 public class Genius {
     static var accessToken: String = ""
     
+    
+    /**
+     Searches the genius database for songs matching the query.
+     */
     public static func search(query: String, completionHandler: @escaping (Array<GeniusSong>?, Error?) -> Void) {
         var params = [
             "q": query
@@ -47,6 +51,9 @@ public class Genius {
     }
     
     
+    /**
+     Reads the HTML site of the genius song to parse the lyrics.
+     */
     public static func getLyrics(song: GeniusSong, completionHandler: @escaping (String?, Error?) -> Void) {
         guard let url = URL(string: song.lyricsUrl) else {
             completionHandler(nil, APIAccessError.malformedURL); return
@@ -76,7 +83,7 @@ public class Genius {
     }
     
     
-    /*
+    /**
      This method forms a URL with the root location of the Genius API and the desired route, including parameters.
      The result a configured URLRequest ready to be used in a data task.
      */
@@ -93,7 +100,7 @@ public class Genius {
 }
 
 
-/*
+/**
  This method returns a completion handler suitable for data tasks.
  It automatically handled errors and forwards them to an existing custom completion handler (completionHandler).
  If no errors occur, the fetched data is passed to a data converter (dataConverter), in order to pass the result to the completionHandler.
@@ -122,7 +129,7 @@ private func wrapCompletionHandler<T>(completionHandler: @escaping (T?, Error?) 
 }
 
 
-/*
+/**
  This struct represents a song with associated metadata
  */
 public struct GeniusSong {
@@ -160,7 +167,7 @@ public struct GeniusSong {
 
 extension Dictionary {
     
-    /*
+    /**
      Encodes keys and values to match the RFC 3986 for URI syntax and returns a string ready to be used in a URL
      */
     func stringFromHttpParameters() -> String {
@@ -176,7 +183,9 @@ extension Dictionary {
 
 
 extension String {
-    
+    /**
+     Replaces all custom line separators with actual line separators and trims whitespace characters.
+     */
     func trimHTML(lineSeparator: String) -> String {
         var result = String()
         for line in self.components(separatedBy: lineSeparator) {
@@ -187,7 +196,7 @@ extension String {
 }
 
 
-/*
+/**
  Custom error types
  */
 public enum APIAccessError : Error {
