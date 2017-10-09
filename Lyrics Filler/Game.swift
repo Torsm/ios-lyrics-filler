@@ -63,9 +63,7 @@ public class Game {
             let time = gaps.count * difficulty.availableTimePerGap() + Int(diff)
             delegate.updateTimer(time: time)
             if time <= 0 {
-                timer.invalidate()
-                gameOver = true
-                delegate.gameOver(win: false)
+                endGame(win: false)
             }
         }
     }
@@ -88,20 +86,22 @@ public class Game {
                 continue
             }
             
-            gaps[word.lowercased()] = (lyrics.range(of: word), false)
+            gaps[word.lowercased()] = (lyrics.range(of: "(?<!\\S)\(word)(?!\\S)", options: .regularExpression), false)
         }
     }
     
     
-    /**
-     Gets called by the controller if the user requested to exit the game.
-     This function will clean up and invalidate properties of the game to prepare for another game.
-     */
-    func exit() {
+    func endGame(win: Bool) {
         timer.invalidate()
         startTime = nil
         gameOver = true
-        delegate.close()
+        delegate.gameOver(win: win)
+        
+        for (_, (range, filled)) in gaps {
+            if !filled {
+                delegate.fillGap(gap: range)
+            }
+        }
     }
     
     
@@ -138,12 +138,10 @@ public class Game {
      */
     private func fillGap(word: String, range: NSRange) {
         gaps[word] = (range, true)
-        delegate.successfulInput(gap: range)
+        delegate.fillGap(gap: range)
         
         if gaps.values.filter({ !$1 }).isEmpty {
-            timer.invalidate()
-            gameOver = true
-            delegate.gameOver(win: true)
+            endGame(win: true)
         }
     }
 }
@@ -155,8 +153,7 @@ public class Game {
 public protocol GameDelegate {
     func gameLoaded()
     func loadingFailed()
-    func successfulInput(gap: NSRange)
-    func close()
+    func fillGap(gap: NSRange)
     func gameOver(win: Bool)
     func updateTimer(time: Int)
     func jokerUsed()

@@ -78,12 +78,16 @@ class GameViewController: UIViewController, GameDelegate {
      Gets called by the model if the entered text is matching a gap or a joker has been used.
      Scrolls to the corresponding gap and redecorates the textview to unveil it.
      */
-    func successfulInput(gap: NSRange) {
+    func fillGap(gap: NSRange) {
         textField.text = ""
         textView.scrollRangeToVisible(gap)
         
-        attributedText.addAttribute(NSBackgroundColorAttributeName, value: UIColor.init(hexString: "#F4FFE0"), range: gap)
-        attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.darkGray, range: gap)
+        if game.gameOver {
+            attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(hexString: "#E74C3C"), range: gap)
+        } else {
+            attributedText.addAttribute(NSBackgroundColorAttributeName, value: UIColor.init(hexString: "#F4FFE0"), range: gap)
+            attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.darkGray, range: gap)
+        }
         
         textView.attributedText = attributedText
     }
@@ -94,11 +98,11 @@ class GameViewController: UIViewController, GameDelegate {
      */
     @IBAction func giveupButtonPressed(_ sender: Any) {
         if game.gameOver {
-            game.exit()
+            performSegue(withIdentifier: "unwindGameView", sender: self)
         } else {
             let alert = UIAlertController(title: "Aufgeben?", message: "Möchtest du aufgeben und das Spiel beenden?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ja", style: .default) { _ in
-                self.game.exit()
+                self.game.endGame(win: false)
             })
             alert.addAction(UIAlertAction(title: "Nein", style: .cancel))
             present(alert, animated: true, completion: nil)
@@ -118,11 +122,6 @@ class GameViewController: UIViewController, GameDelegate {
     }
     
     
-    func close() {
-        performSegue(withIdentifier: "unwindGameView", sender: self)
-    }
-    
-    
     func updateTimer(time: Int) {
         timerLabel.text = time.format()
     }
@@ -137,7 +136,7 @@ class GameViewController: UIViewController, GameDelegate {
      Will adjust the layout of the view when the keyboard will show.
      */
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
             bottomConstraint.constant = CGFloat(keyboardHeight + 8)
         }
